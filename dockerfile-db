@@ -1,0 +1,22 @@
+FROM ubuntu:18.04
+# sets working directory
+WORKDIR /home/ubuntu
+# adds folder to container
+ADD environment/db /home/ubuntu/environment/db
+# runs installls and commands
+RUN apt-get update -y
+RUN apt-get install wget -y
+RUN apt-get install sudo -y
+RUN apt-get install -y gnupg2
+RUN apt-get install systemd -y
+RUN chmod u+x environment/db/provision.sh
+RUN ./environment/db/provision.sh
+# sets volume - populates data
+VOLUME ["/data/db"]
+WORKDIR /data
+# exposes the port to networking
+EXPOSE 27017
+#CMD ["mongod","start"]
+# runs commands 
+CMD ["mongod", "--smallfiles"]
+#CMD ["chmod 777 environment/provision.sh","./environment/provision.sh"]
