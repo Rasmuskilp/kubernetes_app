@@ -27,52 +27,52 @@ Pods are the atomic unit on the Kubernetes platform. "
 
 ## First you need to proxy to get deployment (on a second terminal)
 kubectl proxy --port=3000
-# to show deployments
+## to show deployments
 kubectl get deployments
-# to show node
+## to show node
 kubectl get nodes
-# to show pods
+## to show pods
 kubectl get pods
-# to get detailed information on pods
+## to get detailed information on pods
 kubectl describe pods
-# to set a generic name for the deployment
+## to set a generic name for the deployment
 export POD_NAME=$(kubectl get pods -o go-template --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}')
 echo Name of the Pod: $POD_NAME
 curl http://localhost:3000/api/v1/namespaces/default/pods/$POD_NAME
-# to get logs of the pod
+## to get logs of the pod
 kubectl logs $POD_NAME
-# to set env variable  for the pod
+## to set env variable  for the pod
 kubectl exec $POD_NAME env
-# to execute commands in bash inside the pod
+## to execute commands in bash inside the pod
  kubectl exec -ti $POD_NAME bash
-# to got to localhost:3000 inside the pod
+## to go to localhost:3000 inside the pod
 curl localhost:3000
-# to show services
+## to show services
 kubectl get services
-# to expose the pods with nodeport service to outside of minikube
+## to expose the pods with nodeport service to outside of minikube
 kubectl expose deployment/kubernetes-app  --type="NodePort" --port 3000
-# to show information on the deployment/service
+## to show information on the deployment/service
 kubectl describe services/kubernetes-app
-# to set generic name for the service
+## to set generic name for the service
 export NODE_PORT=$(kubectl get services/kubernetes-app -o go-template='{{(index .spec.ports 0).nodePort}}')
-# to get the pod at that ip
+## to get the pod at that ip
 curl $(minikube ip):$NODE_PORT
-# to label the pod
+## to label the pod
 kubectl label pod $POD_NAME app=v1
-# to run the service
+## to run the service
 kubectl get service run=app-kubernetes
 # short version of deploying part of the app:
-# to run the image
+## to run the image
 kubectl run web --image=gcr.io/google-samples/hello-app:1.0 --port=8080
-# to expose the deployment to outside to that port and using that service
+## to expose the deployment to outside to that port and using that service
 kubectl expose deployment web --target-port=8080 --type=NodePort
-# to show the service
+## to show the service
 kubectl get service web
-# to show on which url the service is running on
+## to show on which url the service is running on
 minikube service web --url
-# now you can go to the url on that service and see the app working :)
+## now you can go to the url on that service and see the app working :)
 
-# These were initial commands that I did with kubernetes on an Windows machine
+### These were initial commands that I did with kubernetes on an Windows machine
 [18:17] Rasmus Kilp
     $ minikube start --vm-driver=hyperv --kubernetes-version 1.14.8
 ​[18:17] Rasmus Kilp
