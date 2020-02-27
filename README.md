@@ -1,25 +1,25 @@
 
 # This part is for kubernetes
-https://kubernetes.io/docs/tutorials/kubernetes-basics/create-cluster/cluster-intro/
+Source : https://kubernetes.io/docs/tutorials/kubernetes-basics/create-cluster/cluster-intro/
 ## Cluster
-"Kubernetes coordinates a highly available cluster of computers that are connected to work as a single unit. "
+"Kubernetes coordinates a highly available cluster of computers that are connected to work as a single unit.
 Kubernetes coordinates a highly available cluster of computers that are connected to work as a single unit
 A node is a VM or a physical computer that serves as a worker machine in a Kubernetes cluster.
-he nodes communicate with the master using the Kubernetes API,
+he nodes communicate with the master using the Kubernetes API. "
 ## Serivces
- Service in Kubernetes is an abstraction which defines a logical set of Pods and a policy by which to access them. Services enable a loose coupling between dependent Pods.
- NodePort - Exposes the Service on the same port of each selected Node in the cluster using NAT. Makes a Service accessible from outside the cluster using <NodeIP>:<NodePort>. Superset of ClusterIP.
+ "Service in Kubernetes is an abstraction which defines a logical set of Pods and a policy by which to access them. Services enable a loose coupling between dependent Pods.
+ NodePort - Exposes the Service on the same port of each selected Node in the cluster using NAT. Makes a Service accessible from outside the cluster using <NodeIP>:<NodePort>. Superset of ClusterIP."
 ## Pods
-A Pod is a Kubernetes abstraction that represents a group of one or more application containers (such as Docker or rkt), and some shared resources for those containers. Those resources include:
+"A Pod is a Kubernetes abstraction that represents a group of one or more application containers (such as Docker or rkt), and some shared resources for those containers. Those resources include:
 
 Shared storage, as Volumes
 Networking, as a unique cluster IP address
 Information about how to run each container, such as the container image version or specific ports to use
-Pods are the atomic unit on the Kubernetes platform
+Pods are the atomic unit on the Kubernetes platform. "
 ## Nodes
-A Pod always runs on a Node. A Node is a worker machine in Kubernetes and may be either a virtual or a physical machine, depending on the cluster. Each Node is managed by the Master
+"A Pod always runs on a Node. A Node is a worker machine in Kubernetes and may be either a virtual or a physical machine, depending on the cluster. Each Node is managed by the Master."
 ## Deployments
-Once you have a running Kubernetes cluster, you can deploy your containerized applications on top of it. To do so, you create a Kubernetes Deployment configuratio
+"Once you have a running Kubernetes cluster, you can deploy your containerized applications on top of it. To do so, you create a Kubernetes Deployment configuration. "
 [18:17] Rasmus Kilp
     $ minikube start --vm-driver=hyperv --kubernetes-version 1.14.8
 ​[18:17] Rasmus Kilp
@@ -46,9 +46,9 @@ Once you have a running Kubernetes cluster, you can deploy your containerized ap
         to show ip (though it is local anyway)
     ​[18:20] Rasmus Kilp
         $ kubectl expose deployment rasmus-upn --port=8080
-#These are instructions oh how to run an app deployment with kubernetes
-##Assumes you have a prebuild docker image
-##First you need to proxy to get deployment
+#These are instructions on how to run an app deployment with kubernetes
+##Assumes you have a prebuilt docker image
+##First you need to proxy to get deployment (on a second terminal)
 kubectl proxy --port=3000
 #to show deployments
 kubectl get deployments
